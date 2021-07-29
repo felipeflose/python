@@ -2,7 +2,6 @@ from speedtest import Speedtest
 from datetime import datetime
 import pandas as pd
 import time
-import matplotlib.pyplot
 
 st = Speedtest()
 mb = 10**-6
@@ -24,4 +23,4 @@ while i < 200:
     time.sleep(1)
     #print(df)
 
-    matplotlib.pyplot.plot(df.data , df.d)
+

@@ -19,7 +19,7 @@ df = pd.DataFrame({'data':dt, 'id':i, 'download':d,'upload':u},index=[0])
 
 while i < 1440:
 
-    os.system('cls')
+    os.system('clear')
     dt = datetime.today()
     d = st.download()*mb
     u = st.upload()*mb  

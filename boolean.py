@@ -6,7 +6,7 @@
 #or 
 #not
 
-Criando uma tabela verdade
+#Criando uma tabela verdade
 
 #AND
 

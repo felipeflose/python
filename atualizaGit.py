@@ -1,4 +1,6 @@
+import os
+caminho = input("Entre com o caminho para Atualizacao: ")
+comandoGitPull = "git pull"
 
 
-caminho = input("Entre com o caminho para Atualizacao")
-git = input("Entre com o caminho para git para clone")
+os.system("cd "+"caminho")

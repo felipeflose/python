@@ -9,8 +9,6 @@ import time
 
 ## conta laços
 
-
-
 def cont():
         dt = datetime.today()
         dtf = '23:59'
@@ -19,10 +17,6 @@ def cont():
         r = fi - ag
 
         return r
-
-##
-## entra variáveis
-
 st = Speedtest()
 mb = 10**-6
 dt = datetime.today()
@@ -32,18 +26,13 @@ i = 0
 c = 300
 p_d = d / c 
 
-##cria lista
 df = pd.DataFrame({'data':dt, 'id':i, 'download':d,'upload':u, '%':"{:.2%}".format(p_d)},index=[0])
-
-##laço
 
 i = 0
 
-
-
 while i < cont():
     
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
     dt = datetime.today()
     d = st.download()*mb
     u = st.upload()*mb  
@@ -59,7 +48,4 @@ for i in range(cont()):
         fig.pause(1)
         ax.plot(x=['id'],y=['download'])
 i = cont() -1
-
-
-
 

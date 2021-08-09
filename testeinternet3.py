@@ -1,5 +1,5 @@
 
-from datetime import datetime
+
 from speedtest import Speedtest
 import matplotlib.pyplot as fig
 from datetime import datetime
@@ -7,7 +7,6 @@ import pandas as pd
 import os
 import time
 
-## conta laços
 
 def cont():
         dt = datetime.today()

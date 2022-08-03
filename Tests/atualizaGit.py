@@ -1,7 +1,7 @@
 
 import git
 
-caminho = input("Entre com o caminho para Atualizacao: ")
+caminho = 'C:\\Users\\fflose\\Lab\\Pessoal\\python\\csv\\teste_internet'
 comandoFinderLocaliza = caminho
 g = git.cmd.Git(comandoFinderLocaliza)
-g.pull()
+g.commit()

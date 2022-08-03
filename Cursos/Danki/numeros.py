@@ -1,0 +1,4 @@
+#tipos
+int
+float
+complex()

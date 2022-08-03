@@ -1,4 +1,0 @@
-#tipos
-int
-float
-complex()

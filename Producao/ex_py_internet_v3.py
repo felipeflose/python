@@ -45,10 +45,23 @@ def cria_lista():
 
         return lista
 
+def qual_caminho():
+      import socket
+      name = socket.gethostname()
+      if name == 'LGNTVIVO71':
+                caminho = "C:\\Users\\fflose\\Lab\\\Pessoal\\python\\csv\\teste_internet\\"
+      else:
+                caminho =  "D:\\Felipe Flose\\csv\\teste_internet"
+           
+      return(caminho)
+
+
 def cria_arquivo():
+       
         dt = datetime.now().strftime('%d-%m-%Y')
         hr = datetime.now().strftime('%H-%M-%S')     
-        caminho = "C:\\Users\\fflose\\Lab\\\Pessoal\\python\\csv\\teste_internet\\"+"teste_internet-"+str(dt)+"-"+str(hr)+".csv"
+        c = qual_caminho()
+        caminho = c+"teste_internet-"+str(dt)+"-"+str(hr)+".csv"
         cab = ['idExec','dt_teste','hora_teste','hora_fechada','down','chegou','up','dtProcesso','hrProcesso','caminho']
         f = open(caminho,'w',encoding= 'utf-8',newline='')
         w = csv.DictWriter(f,delimiter=',', fieldnames=cab)
@@ -70,19 +83,19 @@ def cria_arquivo():
         
 
 def qtd_arquivos():
-        path = "C:\\Users\\fflose\\Lab\\Pessoal\\python\csv\\teste_internet\\"
+        path = qual_caminho()
         ListaArquivos = os.listdir(path)
         return len(ListaArquivos)
 
 def lista_arquivos():
         
-        path = "C:\\Users\\fflose\\Lab\\Pessoal\\python\csv\\teste_internet\\"
+        path = qual_caminho()
         ListaArquivos = os.listdir(path)
         return list(ListaArquivos)
 
 def deleta_vazio():
         for x in lista_arquivos():
-                path = "C:\\Users\\fflose\\Lab\\Pessoal\\python\csv\\teste_internet\\"
+                path = qual_caminho()
                 arq1 = open(path+x)
                 arq1Lendo = csv.reader(arq1,delimiter=',',quoting=csv.QUOTE_NONE)
                 arqLista = list(arq1Lendo)
@@ -91,10 +104,30 @@ def deleta_vazio():
                     os.remove(arq1)        
                 return print('arquivo '+ x +'  deletado!')
 
+def cria_versao_final():
+        path = qual_caminho()
+        c1 = 0
+        caminho = "C:\\Users\\fflose\\Lab\\csv\\annual-enterprise-survey_python.csv"
+        f = open(caminho,'w',newline='',encoding= 'utf-8')
+        ListaArquivos = os.listdir(path)
+for c in ListaArquivos:
+    nomeArquivo = ListaArquivos[c1]
+    caminho1 = path+nomeArquivo
+    arq1 = open(caminho1)
+    arq1Lendo = csv.reader(arq1,delimiter=';',quoting=csv.QUOTE_NONE)
+    arqLista = list(arq1Lendo)
+    w = csv.writer(f)
+    w.writerow(arqLista)
+    c1 = c1+1
+    os.remove(caminho1)
 
+
+
+#\\desktop-73E3J72\teste_internet\
 
 while 1 == 1 :
    # deleta_vazio()
+    qual_caminho()
     cria_arquivo()
     print(qtd_arquivos())
     time.sleep(1)

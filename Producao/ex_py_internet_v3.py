@@ -49,8 +49,7 @@ def qual_caminho():
       if name == 'LGNTVIVO71':
                 caminho = "C:\\Users\\fflose\\Lab\\\Pessoal\\python\\csv\\teste_internet\\"
       else:
-                caminho =  "D:\\Felipe Flose\\csv\\teste_internet\\"
-           
+                caminho =  "D:\\Felipe Flose\\csv\\teste_internet\\"     
       return(caminho)
 
 
@@ -102,6 +101,22 @@ def deleta_vazio():
                     os.remove(arq1)        
                 return print('arquivo '+ x +'  deletado!')
 
+def cria_versao_final():
+        path = qual_caminho()
+        c1 = 0
+        caminho = "C:\\Users\\fflose\\Lab\\csv\\annual-enterprise-survey_python.csv"
+        f = open(caminho,'w',newline='',encoding= 'utf-8')
+        ListaArquivos = os.listdir(path)
+        for c in ListaArquivos:
+                nomeArquivo = ListaArquivos[c1]
+                caminho1 = path+nomeArquivo
+                arq1 = open(caminho1)
+                arq1Lendo = csv.reader(arq1,delimiter=';',quoting=csv.QUOTE_NONE)   
+                arqLista = list(arq1Lendo)
+                w = csv.writer(f)
+                w.writerow(arqLista)
+                c1 = c1+1
+                os.remove(caminho1)
 
 
 

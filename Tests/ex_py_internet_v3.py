@@ -51,7 +51,7 @@ def qual_caminho():
       if name == 'LGNTVIVO71':
                 caminho = "C:\\Users\\fflose\\Lab\\\Pessoal\\python\\csv\\teste_internet\\"
       else:
-                caminho =  "D:\\Felipe Flose\\csv\\teste_internet"
+                caminho =  "D:\\Felipe Flose\\csv\\teste_internet\\"
            
       return(caminho)
 
@@ -131,6 +131,5 @@ while 1 == 1 :
     cria_arquivo()
     print(qtd_arquivos())
     time.sleep(1)
-
 
 

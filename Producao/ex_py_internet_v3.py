@@ -1,5 +1,3 @@
-
-from lib2to3.pgen2.token import NEWLINE
 import os
 import csv
 import time
@@ -51,7 +49,11 @@ def qual_caminho():
       if name == 'LGNTVIVO71':
                 caminho = "C:\\Users\\fflose\\Lab\\\Pessoal\\python\\csv\\teste_internet\\"
       else:
+<<<<<<< HEAD
                 caminho =  "D:\\Felipe Flose\\csv\\teste_internet"
+=======
+                caminho =  "D:\\Felipe Flose\\csv\\teste_internet\\"
+>>>>>>> 0905244492754c3de6a336a57cc90b83b289bbcd
            
       return(caminho)
 
@@ -131,6 +133,5 @@ while 1 == 1 :
     cria_arquivo()
     print(qtd_arquivos())
     time.sleep(1)
-
 
 

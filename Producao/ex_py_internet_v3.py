@@ -113,5 +113,3 @@ while 1 == 1 :
     cria_arquivo()
     print(qtd_arquivos())
     time.sleep(1)
-
-

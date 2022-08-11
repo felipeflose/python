@@ -43,6 +43,7 @@ class internet:
                 data_atual, hora_atual, velocidade_download, velocidade_upload = internet.teste_internet()
                 #id = uuid.uuid1()
                 # lista.append(id)
+                #sjkdapksos
                 lista.append(data_atual)
                 lista.append(hora_atual)
                 lista.append(velocidade_download)

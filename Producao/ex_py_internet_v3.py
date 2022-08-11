@@ -70,49 +70,81 @@ class internet:
 
         return(caminho)
 
-    def main():
-        x = []
-        x.append(tuple(internet.cria_item()))
-        sql_insert = 'insert into teste ' \
-                     '(dt_teste' \
-                     ',hora_teste' \
-                     ',down' \
-                     ',up) values'
-        for i in x:
-            Sql.cria_tabelas()
-            print(sql_insert + str(i))
-            con = Sql.conexao()
-            cur = Sql.cursor()
-            cur.execute(sql_insert + str(i))
-            con.commit()
-            con.close()
+
+def cria_arquivo():
+       
+        dt = datetime.now().strftime('%d-%m-%Y')
+        hr = datetime.now().strftime('%H-%M-%S')     
+        c = qual_caminho()
+        caminho = c+"teste_internet-"+str(dt)+"-"+str(hr)+".csv"
+        cab = ['idExec','dt_teste','hora_teste','hora_fechada','down','chegou','up','dtProcesso','hrProcesso','caminho']
+        f = open(caminho,'w',encoding= 'utf-8',newline='')
+        w = csv.DictWriter(f,delimiter=',', fieldnames=cab)
+        w.writeheader()
+        f = open(caminho,'a',encoding= 'utf-8',newline='')
+        w = csv.writer(f,delimiter=',')
+        lista_grava = cria_lista()
+        lista_grava.append(caminho)
+        w.writerow(lista_grava)
+        
+        #w.writerow(cab)
+        #f.close()
+        #f = open(caminho,'w',newline='',encoding= 'utf-8')
+        #w = csv.writer(f,delimiter=',')        
+        #lista_grava = cria_lista()
+        #lista_grava.append(caminho)
+        #w.writerow(lista_grava)
+        
+        
+
+def qtd_arquivos():
+        path = qual_caminho()
+        ListaArquivos = os.listdir(path)
+        return len(ListaArquivos)
+
+def lista_arquivos():
+        
+        path = qual_caminho()
+        ListaArquivos = os.listdir(path)
+        return list(ListaArquivos)
+
+def deleta_vazio():
+        for x in lista_arquivos():
+                path = qual_caminho()
+                arq1 = open(path+x)
+                arq1Lendo = csv.reader(arq1,delimiter=',',quoting=csv.QUOTE_NONE)
+                arqLista = list(arq1Lendo)
+                if len(arqLista) == 1:
+                    arq1.close()
+                    os.remove(arq1)        
+                return print('arquivo '+ x +'  deletado!')
+
+def cria_versao_final():
+        path = qual_caminho()
+        c1 = 0
+        caminho = "C:\\Users\\fflose\\Lab\\csv\\annual-enterprise-survey_python.csv"
+        f = open(caminho,'w',newline='',encoding= 'utf-8')
+        ListaArquivos = os.listdir(path)
+        for c in ListaArquivos:
+                nomeArquivo = ListaArquivos[c1]
+                caminho1 = path+nomeArquivo
+                arq1 = open(caminho1)
+                arq1Lendo = csv.reader(arq1,delimiter=';',quoting=csv.QUOTE_NONE)   
+                arqLista = list(arq1Lendo)
+                w = csv.writer(f)
+                w.writerow(arqLista)
+                c1 = c1+1
+                os.remove(caminho1)
 
 
-class Sql():
-    def conexao():
-        caminhoBD = '\\\\desktop-73e3j72\\bd\\'
-        nomeTable = 'internet.db'
-        con = sqlite3.connect(caminhoBD+nomeTable)
-        return con
 
-    def cria_tabelas():
-        sql_create_teste = 'CREATE TABLE IF NOT EXISTS teste '\
-            '(idExec INTEGER primary key AUTOINCREMENT, '\
-            'dt_teste date, '\
-            'hora_teste time, '\
-            'down int, '\
-            'up int) '
-        # os.remove(caminhoBD+nomeTable) if os.path.exists(caminhoBD+nomeTable) else
-        Sql.exec(sql_create_teste)
+#\\desktop-73E3J72\teste_internet\
 
-    def cursor():
-        cur = Sql.conexao().cursor()
-        return cur
-
-    def exec(x):
-        cur = Sql.conexao().cursor().execute(x)
-        return cur
+while 1 == 1 :
+   # deleta_vazio()
+   # qual_caminho()
+    cria_arquivo()
+    print(qtd_arquivos())
+    time.sleep(1)
 
 
-if __name__ == "__main__":
-    internet.main()

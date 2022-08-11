@@ -85,7 +85,7 @@ class internet:
             cur = Sql.cursor()
             cur.execute(sql_insert + str(i))
             con.commit()
-            con.close()
+            #con.close()
 
 
 class Sql():
@@ -106,19 +106,12 @@ class Sql():
         Sql.exec(sql_create_teste)
 
     def cursor():
-        cur = Sql.conexao().cursor(r)
+        cur = Sql.conexao().cursor()
         return cur
 
     def exec(x):
         cur = Sql.conexao().cursor().execute(x)
         return cur
-
-    def commit():
-        Sql.conexao.commit()
-
-    def close():
-        Sql.conexao.close()
-
 
 if __name__ == "__main__":
     internet.main()

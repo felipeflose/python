@@ -4,13 +4,12 @@ import os
 import csv
 from re import X
 import time
-import turtle
 import speedtest
 from datetime import datetime
 from time import sleep
 import uuid
 import numpy as np
-import pandas as pd
+#import pandas as pd
 import os
 import csv
 import time
@@ -38,7 +37,7 @@ class internet:
 
     def cria_item():
         lista = []
-        while len(lista) == 0:
+        while len(lista) == 10:
             try:
                 data_atual, hora_atual, velocidade_download, velocidade_upload = internet.teste_internet()
                 #id = uuid.uuid1()
@@ -64,10 +63,11 @@ class internet:
     def qual_caminho():
         import socket
         name = socket.gethostname()
+        print(name)
         if name == 'LGNTVIVO71':
             caminho = "C:\\Users\\fflose\\Lab\\\Pessoal\\python\\csv\\teste_internet\\"
         else:
-            caminho = "D:\\Felipe Flose\\csv\\teste_internet\\"
+            caminho = "Users\\felipeflose\\dev\\bd\\internet_teste\\"
 
         return(caminho)
 
@@ -91,7 +91,7 @@ class internet:
 
 class Sql():
     def conexao():
-        caminhoBD = '\\\\desktop-73e3j72\\bd\\'
+        caminhoBD = 'Users\\felipeflose\\dev\\bd\\internet_teste\\'
         nomeTable = 'internet.db'
         con = sqlite3.connect(caminhoBD+nomeTable)
         return con

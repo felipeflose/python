@@ -1,5 +1,5 @@
 
-from lib2to3.pgen2.token import NEWLINE
+#from lib2to3.pgen2.token import NEWLINE
 import os
 import csv
 from re import X
@@ -67,8 +67,7 @@ class internet:
         if name == 'LGNTVIVO71':
             caminho = "C:\\Users\\fflose\\Lab\\\Pessoal\\python\\csv\\teste_internet\\"
         else:
-            caminho = "Users\\felipeflose\\dev\\bd\\internet_teste\\"
-
+            caminho = r"C:\Users\fflose\Documents\Script\pessoal\bd"
         return(caminho)
 
     def main():
@@ -91,7 +90,7 @@ class internet:
 
 class Sql():
     def conexao():
-        caminhoBD = 'Users\\felipeflose\\dev\\bd\\internet_teste\\'
+        caminhoBD = r"C:\Users\fflose\Documents\Script\pessoal\bd"
         nomeTable = 'internet.db'
         con = sqlite3.connect(caminhoBD+nomeTable)
         return con
